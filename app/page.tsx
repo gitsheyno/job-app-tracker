@@ -1,8 +1,8 @@
-import Test from "./components/Test";
+import Ho from "./components/home/Home";
 export default function Home() {
   return (
-    <div className="">
-      <Test />
+    <div>
+      <Ho />
     </div>
   );
 }
