@@ -30,3 +30,8 @@ export type MergedApplication = {
   files?: File[];
   hiringManager?: string;
 };
+
+export type StageValue = {
+  key: Stage; // The key must be a valid Stage
+  value: string; // The display value
+};
