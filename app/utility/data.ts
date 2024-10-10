@@ -1,4 +1,4 @@
-import { Application, Columns } from "./types";
+import { Application, Columns, StageValue } from "./types";
 import { parseDate } from "@internationalized/date";
 
 export const applications: Application[] = [
@@ -20,24 +20,6 @@ export const applications: Application[] = [
       day: parseDate("2024-04-04"),
       link: "https://nextgen.jobs/backend-developer",
       hiringManager: "jane.smith@nextgen.com",
-    },
-  },
-  {
-    stage: "offer",
-    companyData: {
-      company: "FutureWorks",
-      position: "Full Stack Engineer",
-      day: parseDate("2024-04-04"),
-      link: "https://futureworks.jobs/fullstack-engineer",
-    },
-  },
-  {
-    stage: "offer",
-    companyData: {
-      company: "FutureWorks",
-      position: "Full Stack Engineer",
-      day: parseDate("2024-04-04"),
-      link: "https://futureworks.jobs/fullstack-engineer",
     },
   },
   {
@@ -72,4 +54,11 @@ export const columns: Columns[] = [
     key: "link",
     label: "Link",
   },
+];
+export const stages: StageValue[] = [
+  { key: "todo", value: "To Do" },
+  { key: "applied", value: "Applied" },
+  { key: "interviewed", value: "Interviewed" },
+  { key: "offer", value: "Offer" },
+  { key: "reject", value: "Rejected" },
 ];
