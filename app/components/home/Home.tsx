@@ -15,7 +15,7 @@ import {
   Select,
   SelectItem,
 } from "@nextui-org/react";
-import { Stage, MergedApplication } from "../../utility/types";
+import { MergedApplication } from "../../utility/types";
 import { columns, applications, stages } from "../../utility/data";
 
 export default function Home() {
@@ -35,9 +35,9 @@ export default function Home() {
           scrollShadowProps={{
             isEnabled: false,
           }}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            // console.log("clicked", e.target.value);
-          }}
+          // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+          //   // console.log("clicked", e.target.value);
+          // }}
         >
           {stages.map((animal) => (
             <SelectItem key={animal.key}>{animal.key}</SelectItem>
