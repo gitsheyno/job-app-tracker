@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
+    "@nextui-org/react": "^2.4.8",
     "drizzle-orm": "^0.33.0",
     "next": "14.2.14",
     "react": "^18",
