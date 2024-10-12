@@ -14,9 +14,11 @@
     "@libsql/client": "^0.14.0",
     "@nextui-org/react": "^2.4.8",
     "drizzle-orm": "^0.33.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.2.14",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -24,6 +26,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
