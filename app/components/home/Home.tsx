@@ -1,5 +1,6 @@
 "use client";
-import React, { ReactNode } from "react";
+import React from "react";
+import Row from "../row/Row";
 import {
   Table,
   TableHeader,
@@ -8,53 +9,10 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
-import {
-  Input,
-  DatePicker,
-  DateValue,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
-import { MergedApplication } from "../../utility/types";
-import { columns, applications, stages } from "../../utility/data";
+
+import { columns, applications } from "../../utility/data";
 
 export default function Home() {
-  const renderCell = (
-    application: MergedApplication,
-    columnKey: React.Key
-  ): ReactNode => {
-    const cellValue = application[columnKey as keyof MergedApplication];
-
-    if (columnKey === "stage") {
-      return (
-        <Select
-          aria-label="Select application stage"
-          defaultSelectedKeys={[stages[0].key]}
-          className="max-w-lg"
-          classNames={{ base: "w-[150px]" }}
-          scrollShadowProps={{
-            isEnabled: false,
-          }}
-          // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-          //   // console.log("clicked", e.target.value);
-          // }}
-        >
-          {stages.map((animal) => (
-            <SelectItem key={animal.key}>{animal.key}</SelectItem>
-          ))}
-        </Select>
-      );
-    } else if (
-      columnKey === "company" ||
-      columnKey === "position" ||
-      columnKey === "link"
-    ) {
-      return <Input type="string" defaultValue={cellValue?.toString()} />;
-    } else if (columnKey === "day") {
-      return <DatePicker defaultValue={cellValue as DateValue} />;
-    }
-  };
-
   return (
     <Table
       classNames={{ wrapper: "max-w-4xl mx-auto" }}
@@ -78,7 +36,9 @@ export default function Home() {
           return (
             <TableRow key={item.companyData.company}>
               {(columnKey) => (
-                <TableCell>{renderCell(data, columnKey)}</TableCell>
+                <TableCell key={columnKey}>
+                  <Row key={columnKey} col={columnKey} data={data} />
+                </TableCell>
               )}
             </TableRow>
           );

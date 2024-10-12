@@ -38,10 +38,8 @@ test("it should render chips with correct colors based on stage", () => {
 
   applications.forEach((app, index) => {
     const row = rows[index + 1];
-
     const chip = within(row).getByText(app.stage);
-
-    console.log(chip);
+    expect(chip).toBeTruthy();
   });
 });
 test("it should render correct data in application rows", () => {

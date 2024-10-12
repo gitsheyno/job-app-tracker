@@ -31,6 +31,15 @@ export const applications: Application[] = [
       link: "https://futureworks.jobs/fullstack-engineer",
     },
   },
+  {
+    stage: "reject",
+    companyData: {
+      company: "FutureWorkss",
+      position: "Full Stack Engineer",
+      day: parseDate("2024-04-04"),
+      link: "https://futureworks.jobs/fullstack-engineer",
+    },
+  },
 ];
 
 export const columns: Columns[] = [
