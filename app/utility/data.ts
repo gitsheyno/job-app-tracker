@@ -5,7 +5,7 @@ export const applications: Application[] = [
   {
     stage: "applied",
     companyData: {
-      company: "Tech Innovations",
+      companyName: "Tech Innovations",
       position: "Frontend Developer",
       day: parseDate("2024-04-04"),
       link: "https://tech-innovations.jobs/frontend-developer",
@@ -15,7 +15,7 @@ export const applications: Application[] = [
   {
     stage: "interviewed",
     companyData: {
-      company: "NextGen Solutions",
+      companyName: "NextGen Solutions",
       position: "Backend Developer",
       day: parseDate("2024-04-04"),
       link: "https://nextgen.jobs/backend-developer",
@@ -25,7 +25,7 @@ export const applications: Application[] = [
   {
     stage: "offer",
     companyData: {
-      company: "FutureWorks",
+      companyName: "FutureWorks",
       position: "Full Stack Engineer",
       day: parseDate("2024-04-04"),
       link: "https://futureworks.jobs/fullstack-engineer",
@@ -34,7 +34,7 @@ export const applications: Application[] = [
   {
     stage: "reject",
     companyData: {
-      company: "FutureWorkss",
+      companyName: "FutureWorkss",
       position: "Full Stack Engineer",
       day: parseDate("2024-04-04"),
       link: "https://futureworks.jobs/fullstack-engineer",
@@ -48,8 +48,8 @@ export const columns: Columns[] = [
     label: "Stage",
   },
   {
-    key: "company",
-    label: "Company",
+    key: "companyName",
+    label: "companyName",
   },
   {
     key: "position",

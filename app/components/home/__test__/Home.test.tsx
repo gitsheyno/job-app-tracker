@@ -2,15 +2,16 @@ import { render, screen, within } from "@testing-library/react";
 import { expect, test } from "vitest";
 import Home from "../Home";
 import { applications } from "../../../utility/data";
+import { MergedApplication } from "@/app/utility/types";
 
 test("it should render the component without crashing", () => {
-  render(<Home />);
+  render(<Home data={applications as unknown as MergedApplication[]} />);
   screen.debug();
   expect(screen.getByLabelText("job applications")).toBeTruthy();
 });
 
 test("it should render the correct table headers", () => {
-  render(<Home />);
+  render(<Home data={applications as unknown as MergedApplication[]} />);
   const headers = ["Stage", "Company", "Position", "Day", "Link"];
   headers.forEach((header) => {
     expect(screen.getByText(header)).toBeTruthy();
@@ -18,7 +19,7 @@ test("it should render the correct table headers", () => {
 });
 
 test("it should render DatePicker for apply date", () => {
-  render(<Home />);
+  render(<Home data={applications as unknown as MergedApplication[]} />);
 
   const rows = screen.getAllByRole("row");
 
@@ -32,7 +33,7 @@ test("it should render DatePicker for apply date", () => {
 });
 
 test("it should render chips with correct colors based on stage", () => {
-  render(<Home />);
+  render(<Home data={applications as unknown as MergedApplication[]} />);
 
   const rows = screen.getAllByRole("row");
 
@@ -43,7 +44,7 @@ test("it should render chips with correct colors based on stage", () => {
   });
 });
 test("it should render correct data in application rows", () => {
-  render(<Home />);
+  render(<Home data={applications as unknown as MergedApplication[]} />);
 
   const rows = screen.getAllByRole("row");
 
@@ -51,7 +52,7 @@ test("it should render correct data in application rows", () => {
     const row = rows[index + 1];
 
     const companyCell = within(row).getByDisplayValue(
-      app.companyData.company.toString()
+      app.companyData.toString()
     );
     expect(companyCell).toBeTruthy();
 

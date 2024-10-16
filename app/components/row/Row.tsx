@@ -29,15 +29,15 @@ export default function Row({
 
   const [color, setColor] = React.useState<
     "default" | "primary" | "secondary" | "success" | "warning" | "danger"
-  >();
+  >(stageStatus[data.stage]);
   const component: ReactNode =
     col === "stage" ? (
       <Select
         color={color}
         aria-label="Select application stage"
-        defaultSelectedKeys={[stages[0].key]}
+        defaultSelectedKeys={[data.stage]}
         className="max-w-lg"
-        classNames={{ base: "w-[150px]" }}
+        classNames={{ base: "w-[120px]" }}
         scrollShadowProps={{
           isEnabled: false,
         }}
@@ -51,10 +51,12 @@ export default function Row({
       </Select>
     ) : col === "day" ? (
       <DatePicker
-        defaultValue={data[col as keyof MergedApplication] as DateValue}
+      // defaultValue={data[col as keyof MergedApplication]}
+      // defaultValue={"2024, 12, 12" as unknown as DateValue}
       />
     ) : (
       <Input
+        className="w-[150px]"
         type="string"
         disabled={data[col as keyof MergedApplication] === "reject"}
         defaultValue={data[col as keyof MergedApplication]?.toString()}

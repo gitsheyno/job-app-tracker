@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1728087784210,
-      "tag": "0000_swift_kitty_pryde",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1728087957922,
-      "tag": "0001_magenta_ogun",
+      "when": 1728834309317,
+      "tag": "0000_swift_the_captain",
       "breakpoints": true
     }
   ]

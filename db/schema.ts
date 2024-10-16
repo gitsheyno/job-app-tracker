@@ -16,9 +16,21 @@ const date = (name: string) => text(name);
 
 const boolean = (field: string) => integer(field, { mode: "boolean" });
 
-export const users = sqliteTable("users", {
-  id: id(),
-  createdAt: createdAt(),
-  email: text("email").unique().notNull(),
+// User table schema
+export const users = sqliteTable("user", {
+  userId: integer("userId").primaryKey(),
+  username: text("username").notNull(),
   password: text("password").notNull(),
+});
+
+// Application table schema
+export const application = sqliteTable("application", {
+  id: integer("id").primaryKey(),
+  stage: text("stage").notNull(),
+  company: text("company").notNull(),
+  position: text("position").notNull(),
+  link: text("link").notNull(),
+  userId: integer("userId")
+    .references(() => users.userId)
+    .notNull(), // Foreign key referencing userId from user table
 });

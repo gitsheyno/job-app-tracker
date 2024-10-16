@@ -11,13 +11,13 @@ import {
 } from "@nextui-org/table";
 
 import { columns, applications } from "../../utility/data";
+import { MergedApplication } from "@/app/utility/types";
+import { CalendarDate } from "@nextui-org/react";
 
-export default function Home() {
+export default function Home({ data }: { data: MergedApplication[] }) {
+  console.log(data);
   return (
-    <Table
-      classNames={{ wrapper: "max-w-4xl mx-auto" }}
-      aria-label="job applications"
-    >
+    <Table classNames={{ wrapper: "mx-auto" }} aria-label="job applications">
       <TableHeader aria-label="label" columns={columns}>
         {(column) => (
           <TableColumn className="text-center" key={column.key}>
@@ -25,19 +25,19 @@ export default function Home() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody aria-label="label" items={applications}>
+      <TableBody aria-label="label" items={data}>
         {(item) => {
-          const { companyData, stage } = item;
+          // const { companyData, stage } = item;
 
-          const data = {
-            ...companyData,
-            stage,
-          };
+          // const data = {
+          //   ...item,
+          //   day: new CalendarDate(2024, 10, 8),
+          // };
           return (
-            <TableRow key={item.companyData.company}>
+            <TableRow key={item.appId}>
               {(columnKey) => (
                 <TableCell key={columnKey}>
-                  <Row key={columnKey} col={columnKey} data={data} />
+                  <Row key={columnKey} col={columnKey} data={item} />
                 </TableCell>
               )}
             </TableRow>

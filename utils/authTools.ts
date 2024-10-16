@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 
 const SECRET = "use_an_ENV_VAR";
 
-export const createTokenForUser = (userId: string) => {
+export const createTokenForUser = (userId: number) => {
   const token = jwt.sign({ id: userId }, SECRET);
   return token;
 };
@@ -16,14 +16,13 @@ export const getUserFromToken = async (token: {
   name: string;
   value: string;
 }) => {
-  const payload = jwt.verify(token.value, SECRET) as { id: string };
+  const payload = jwt.verify(token.value, SECRET) as { userId: number };
 
   const user = await db.query.users.findFirst({
-    where: eq(users.id, payload.id),
+    where: eq(users.userId, payload.userId),
     columns: {
-      id: true,
-      email: true,
-      createdAt: true,
+      userId: true,
+      username: true,
     },
   });
 
@@ -31,14 +30,14 @@ export const getUserFromToken = async (token: {
 };
 
 export const signin = async ({
-  email,
+  username,
   password,
 }: {
-  email: string;
+  username: string;
   password: string;
 }) => {
   const match = await db.query.users.findFirst({
-    where: eq(users.email, email),
+    where: eq(users.username, username),
   });
 
   if (!match) throw new Error("invalid user");
@@ -49,29 +48,26 @@ export const signin = async ({
     throw new Error("invalud user");
   }
 
-  const token = createTokenForUser(match.id);
+  const token = createTokenForUser(match.userId);
   const { password: pw, ...user } = match;
 
   return { user, token };
 };
 
 export const signup = async ({
-  email,
+  username,
   password,
-  role,
 }: {
-  email: string;
+  username: string;
   password: string;
-  role: string;
 }) => {
   const hashedPW = await hashPW(password);
   const rows = await db
     .insert(users)
-    .values({ email, password: hashedPW })
+    .values({ username, password: hashedPW })
     .returning({
-      id: users.id,
-      email: users.email,
-      createdAt: users.createdAt,
+      id: users.userId,
+      username: users.username,
     });
 
   const user = rows[0];
