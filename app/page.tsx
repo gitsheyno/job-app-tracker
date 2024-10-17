@@ -13,8 +13,6 @@ export default async function Home({
 }: {
   searchParams: SearchParams;
 }) {
-  console.log(searchParams.query);
-
   const query = searchParams.query || "";
   const limit = searchParams.limit || "";
   return (

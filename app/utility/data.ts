@@ -1,44 +1,40 @@
-import { Application, Columns, StageValue } from "./types";
-import { parseDate } from "@internationalized/date";
+import { Columns, MergedApplication, StageValue } from "./types";
+// import { parseDate } from "@internationalized/date";
 
-export const applications: Application[] = [
+export const applications: MergedApplication[] = [
   {
+    appId: 1,
     stage: "applied",
-    companyData: {
-      companyName: "Tech Innovations",
-      position: "Frontend Developer",
-      day: parseDate("2024-04-04"),
-      link: "https://tech-innovations.jobs/frontend-developer",
-      hiringManager: "john.doe@techinnovations.com",
-    },
+    companyName: "Tech Innovations",
+    position: "Frontend Developer",
+    // day: parseDate("2024-04-04"),
+    link: "https://tech-innovations.jobs/frontend-developer",
+    hiringManager: "john.doe@techinnovations.com",
   },
   {
+    appId: 2,
     stage: "interviewed",
-    companyData: {
-      companyName: "NextGen Solutions",
-      position: "Backend Developer",
-      day: parseDate("2024-04-04"),
-      link: "https://nextgen.jobs/backend-developer",
-      hiringManager: "jane.smith@nextgen.com",
-    },
+    companyName: "NextGen Solutions",
+    position: "Backend Developer",
+    // day: parseDate("2024-04-04"),
+    link: "https://nextgen.jobs/backend-developer",
+    hiringManager: "jane.smith@nextgen.com",
   },
   {
+    appId: 3,
     stage: "offer",
-    companyData: {
-      companyName: "FutureWorks",
-      position: "Full Stack Engineer",
-      day: parseDate("2024-04-04"),
-      link: "https://futureworks.jobs/fullstack-engineer",
-    },
+    companyName: "FutureWorks",
+    position: "Full Stack Engineer",
+    // day: parseDate("2024-04-04"),
+    link: "https://futureworks.jobs/fullstack-engineer",
   },
   {
+    appId: 4,
     stage: "reject",
-    companyData: {
-      companyName: "FutureWorkss",
-      position: "Full Stack Engineer",
-      day: parseDate("2024-04-04"),
-      link: "https://futureworks.jobs/fullstack-engineer",
-    },
+    companyName: "FutureWorkss",
+    position: "Full Stack Engineer",
+    // day: parseDate("2024-04-04"),
+    link: "https://futureworks.jobs/fullstack-engineer",
   },
 ];
 

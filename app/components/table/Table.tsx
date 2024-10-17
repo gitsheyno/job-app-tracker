@@ -7,10 +7,8 @@ export default async function Table({
   query: string;
   limit: string;
 }) {
-  console.log(limit);
   const res = await fetch(
-    //TODO add limit to the api
-    `https://job-tracker-server-5q58.onrender.com/app?position=${query}`,
+    `https://job-tracker-server-5q58.onrender.com/app?position=${query}&limit=${limit}`,
     {
       cache: "no-store",
     }
