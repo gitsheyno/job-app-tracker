@@ -7,8 +7,8 @@ import { COOKIE_NAME } from "@/utils";
 
 export type State = {
   errors?: {
-    email?: string;
-    password?: string;
+    email?: string[];
+    password?: string[];
   };
   message?: string | null;
 };
@@ -19,7 +19,7 @@ const authSchema = z.object({
   role: z.string(),
 });
 
-export const registerUser = async (prevState: any, formData: FormData) => {
+export const registerUser = async (prevState: State, formData: FormData) => {
   const data = authSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -45,7 +45,7 @@ export const registerUser = async (prevState: any, formData: FormData) => {
   redirect("/dashboard");
 };
 
-export const signinUser = async (prevState: any, formData: FormData) => {
+export const signinUser = async (prevState: State, formData: FormData) => {
   const data = authSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),

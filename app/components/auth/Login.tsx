@@ -1,25 +1,22 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import { Input, Button } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { registerUser } from "@/actions/auth";
 import Link from "next/link";
 import Submit from "../Submit";
+import { useFormState } from "react-dom";
 
 export type State = {
   errors?: {
-    email?: string;
-    password?: string;
+    email?: string[];
+    password?: string[];
   };
   message?: string | null;
 };
 const initState: State = { message: null, errors: {} };
 
 const SignupForm = () => {
-  const [formState, action] = useFormState<State>(
-    registerUser as any,
-    initState
-  );
+  const [formState, action] = useFormState(registerUser, initState);
 
   return (
     <form

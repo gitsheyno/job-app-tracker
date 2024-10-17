@@ -10,9 +10,9 @@ import {
   TableCell,
 } from "@nextui-org/table";
 
-import { columns, applications } from "../../utility/data";
+import { columns } from "../../utility/data";
 import { MergedApplication } from "@/app/utility/types";
-import { CalendarDate } from "@nextui-org/react";
+// import { CalendarDate } from "@nextui-org/react";
 
 export default function Home({ data }: { data: MergedApplication[] }) {
   console.log(data);

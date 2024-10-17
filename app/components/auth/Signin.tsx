@@ -1,15 +1,15 @@
 "use client";
 
-import { useFormState } from "react-dom";
 import { Input } from "@nextui-org/react";
 import { signinUser } from "@/actions/auth";
 import Link from "next/link";
 import Submit from "../Submit";
+import { useFormState } from "react-dom";
 
 export type State = {
   errors?: {
-    email?: string;
-    password?: string;
+    email?: string[];
+    password?: string[];
   };
   message?: string | null;
 };
@@ -17,7 +17,7 @@ export type State = {
 const initState: State = { message: null, errors: {} };
 
 const SigninForm = () => {
-  const [formState, action] = useFormState<State>(signinUser as any, initState);
+  const [formState, action] = useFormState(signinUser, initState);
   return (
     <form
       action={action}
